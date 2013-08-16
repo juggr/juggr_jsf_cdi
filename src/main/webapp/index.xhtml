@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"      
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:n="http://java.sun.com/jsf/composite/components/notes"
+      >
+ 
+    <h:head>
+        <title>Notes</title>
+    </h:head>
+    <h:body>
+		<h1>Your Notes:</h1>
+		
+		<h:form>
+			<h:panelGrid columns="2">
+				<h:outputLabel for="name" value="Name:"/>
+				<h:inputText id="name" value="#{notesBackingBean.name}"/>
+				<h:outputLabel for="content" value="Content:"/>
+				<h:inputTextarea id="content" value="#{notesBackingBean.content}"/>
+				
+				<h:commandButton value="Add" action="#{notesController.addNote}"/>
+			</h:panelGrid>
+		</h:form>
+		
+		<ui:repeat var="note" value="#{notesBackingBean.notes}">
+			<n:note bean="#{note}"/>
+			
+		</ui:repeat>
+		
+		<!-- 
+		<h:dataTable var="note" value="#{notesBackingBean.notes}">
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Name"/>
+				</f:facet>
+			
+				<h:outputText value="#{note.name}"/>
+			</h:column>
+			
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Content"/>
+				</f:facet>
+				<h:outputText value="#{note.content}"/>
+			</h:column>
+		</h:dataTable>
+		-->
+		
+		
+		
+    </h:body>
+</html>
